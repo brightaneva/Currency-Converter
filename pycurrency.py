@@ -1,11 +1,10 @@
 import requests
 import json
 
-
+import config
 #UNIVERSAL VARIABLES
-API_KEY = "0bad105e04f4e53dfc232b13"
-URL = f"https://v6.exchangerate-api.com/v6/{API_KEY}/latest/USD"
-URL_CODES = f"https://v6.exchangerate-api.com/v6/{API_KEY}/codes"
+URL = f"https://v6.exchangerate-api.com/v6/{config.API_KEY}/latest/USD"
+
 
 
 class Currency_Converter:
@@ -33,7 +32,6 @@ class Currency_Converter:
 		
 		return {
 			"from_currency" : from_currency,
-			"base_curruncy" : self.base_curruncy,
 			"to_currency" : to_currency,  
 			"input_amount" : amount,
 			"result" : amount_figure
@@ -42,7 +40,7 @@ class Currency_Converter:
 
 
 
-
+#For testing
 if __name__ == "__main__":
 	converter = Currency_Converter()
 	print("\n\n")
