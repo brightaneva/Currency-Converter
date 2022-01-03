@@ -43,5 +43,4 @@ class Currency_Converter:
 #For testing
 if __name__ == "__main__":
 	converter = Currency_Converter()
-	print("\n\n")
 	print(converter.convert('GHS','NGN',100))
