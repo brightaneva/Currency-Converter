@@ -33,7 +33,6 @@ class Currency_Converter:
 		
 		return {
 			"from_currency" : from_currency,
-			"base_curruncy" : self.base_curruncy,
 			"to_currency" : to_currency,  
 			"input_amount" : amount,
 			"result" : amount_figure
