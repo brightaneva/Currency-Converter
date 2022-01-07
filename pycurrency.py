@@ -2,9 +2,10 @@ import requests
 import json
 
 import config
+
+
 #UNIVERSAL VARIABLES
 URL = f"https://v6.exchangerate-api.com/v6/{config.API_KEY}/latest/USD"
-
 
 
 class Currency_Converter:
@@ -21,26 +22,28 @@ class Currency_Converter:
 	def convert(self, from_currency, to_currency, amount): 		
 		"""returns amout of needed currency"""
 
-		#first convert it into USD if it is not in USD.
-		# because our base currency is USD
-		if from_currency != 'USD' : 
-			convert2_base = amount / self.currencies[from_currency] 
+		#convert from currency to base currency.
+		#base currency is USD
+		convert2_base = amount / self.currencies[from_currency]
+		
+		conversion_rate = self.currencies[to_currency]
 	  
-		# return only 4 decimal places 
-		amount_figure = round(convert2_base * self.currencies[to_currency], 4)
+		# return only 2 decimal places 
+		amount_figure = round(convert2_base * self.currencies[to_currency], 2)
 		amount_figure = f"{to_currency} {amount_figure}"
 		
-		return {
+		return 	{
 			"from_currency" : from_currency,
 			"to_currency" : to_currency,  
 			"input_amount" : amount,
-			"result" : amount_figure
+			"result" : amount_figure,
+			"conversion_rate" : conversion_rate,
 		}
-
-
+		
+		 
 
 
 #For testing
 if __name__ == "__main__":
 	converter = Currency_Converter()
-	print(converter.convert('GHS','NGN',100))
+	print(converter.convert('USD','GHS',100))
